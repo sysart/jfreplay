@@ -9,7 +9,7 @@ class CardServiceImpl implements CardService {
     /** actual beef of creating some db restrictions would be here... */
     class CardDbRestrictions implements CardRestrictions<CardRestrictions> {
 
-        private List<String> restrictions = new ArrayList<>();
+        private List<String> restrictions = new ArrayList<String>();
 
         @Override
         public CardRestrictions withId(int id) {
@@ -25,19 +25,29 @@ class CardServiceImpl implements CardService {
 
         @Override
         public String toString() {
-            return restrictions.stream().reduce((s1, s2) -> s1 + ", " + s2).orElse("");
+            StringBuilder sb = new StringBuilder();
+            for (String restriction : restrictions) {
+                if (sb.length() > 0) sb.append(", ");
+                sb.append(restriction);
+            }
+            return sb.toString();
         }
     }
 
     /** actual beef of performing some entity modifications would be here... */
     class CardEntityModifications implements CardModifications<CardEntityModifications> {
 
-        private List<String> modifications = new ArrayList<>();
+        private List<String> modifications = new ArrayList<String>();
 
 
         @Override
         public String toString() {
-            return modifications.stream().reduce((s1, s2) -> s1 + ", " + s2).orElse("");
+            StringBuilder sb = new StringBuilder();
+            for (String modification : modifications) {
+                if (sb.length() > 0) sb.append(", ");
+                sb.append(modification);
+            }
+            return sb.toString();
         }
 
         @Override
