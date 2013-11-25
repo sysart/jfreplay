@@ -35,7 +35,7 @@ public class ReplayableFluentProxyTest {
 
 		public ModificationSet increaseAge(int years) {
 			RealModificationSet clone = clone();
-			clone.years = years;
+			clone.years += years;
 			return clone;
 		}
 

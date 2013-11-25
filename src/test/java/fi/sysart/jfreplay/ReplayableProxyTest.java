@@ -29,7 +29,7 @@ public class ReplayableProxyTest {
 		}
 
 		public void increaseAge(int years) {
-			this.years = years;
+			this.years += years;
 		}
 
 		public String getName() {
